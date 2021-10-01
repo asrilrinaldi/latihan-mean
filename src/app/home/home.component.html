@@ -15,7 +15,8 @@
       <td>{{item.department}}</td>
       <td>
         <input type="hidden" #id value="{{item._id}}">
-        <a routerLink="/edit">Edit</a>
+        <a (click)="MoveEdit(id.value)">Edit</a>
+        <!-- <a routerLink="/edit">Edit</a> -->
         &NonBreakingSpace;
         <a (click)="hapus(id.value)">Hapus</a>
       </td>

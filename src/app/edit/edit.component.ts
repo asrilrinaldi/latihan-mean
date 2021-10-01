@@ -1,6 +1,8 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +20,12 @@ export class EditComponent implements OnInit {
   name ='';
   department ='';
   data: any=[];
+ 
   
 
-  constructor (private http: HttpClient, private router: Router){}
+  constructor (private http: HttpClient, private router: Router ){
+
+  }
  
 
   async ngOnInit(){
@@ -50,5 +55,7 @@ export class EditComponent implements OnInit {
    return this.http.put('http://localhost:3000/api/employees/',+id);
  }
 
+    
+  }
+
  
-}

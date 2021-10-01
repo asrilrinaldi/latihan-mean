@@ -9,7 +9,7 @@ import { TambahComponent } from './tambah/tambah.component';
 const appRoutes: Routes = [
   { path: '',     component:  HomeComponent },
   { path: 'tambah',  component:  TambahComponent},
-  { path: 'edit',  component:  EditComponent},
+  { path: 'edit/:id',  component:  EditComponent},
   { path: '**',   redirectTo: ''}
 ];
 
