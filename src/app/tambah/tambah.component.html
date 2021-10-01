@@ -1,0 +1,22 @@
+<div class="margin">
+  <h1>New Employee</h1>
+  <a routerLink="/home">Back</a><br><br>
+    <form class="form">
+      <label for="">Employee ID</label><br>
+      <input name="id" [(ngModel)]="id" matInput placeholder="">
+      <br><br>
+      
+      <label for="">Name</label><br>
+      <input name="name" [(ngModel)]="name" matInput placeholder="">
+      <br><br>
+      
+      <label for="">Department</label><br>
+      <textarea name="department" [(ngModel)]="department" matInput placeholder=""></textarea>
+      <br><br>
+      
+      <button (click)="kirim()" >Save</button>
+    </form>
+  
+      
+ 
+    </div>

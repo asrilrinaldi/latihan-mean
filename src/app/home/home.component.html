@@ -1,0 +1,29 @@
+<div class="margin">
+  <h1>Employee List</h1>
+  <button routerLink="/tambah">+ New Employee</button>
+  <br/><br/>
+  <table>
+    <tr>
+      <th>Employee ID</th>
+      <th>Employee Name</th>
+      <th>Department</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let item of data">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.department}}</td>
+      <td>
+        <input type="hidden" #id value="{{item._id}}">
+        <a routerLink="/edit">Edit</a>
+        &NonBreakingSpace;
+        <a (click)="hapus(id.value)">Hapus</a>
+      </td>
+      
+      
+    </tr>
+    
+   
+  
+  </table>
+

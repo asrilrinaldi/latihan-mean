@@ -1,0 +1,34 @@
+/* mat-card{
+    width: 30%;
+    margin: auto;
+} */
+.margin{
+ padding-top: 2%;
+ padding-left: 5%;
+ padding-right: 5%;
+ padding-bottom: auto;
+}
+.form{
+ padding-top: 2%;
+ padding-left: 10%;
+ padding-right: 10%;
+ padding-bottom: auto;
+}
+.h1{
+    font-size: large;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #302e2e;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
