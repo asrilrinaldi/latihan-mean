@@ -14,8 +14,8 @@
       <td>{{item.name}}</td>
       <td>{{item.department}}</td>
       <td>
-        <!-- <a routerLink="/edit/{{item._id}}">Edit</a> -->
-        <a (click)="edit(item._id)">Edit |</a>
+        <a routerLink="/edit/{{item._id}}">[Edit]</a>
+     
         &NonBreakingSpace;
         <a (click)="hapus(item._id)">Hapus</a>
     

@@ -37,19 +37,7 @@ export class HomeComponent implements OnInit {
     location.reload();
     }
   }
-  edit(id: String){
-    console.log(id);
-    this.http.get('http://localhost:3000/api/employees/'+id). toPromise();
-    
-    this.router.navigate(['./edit/'+id]);
-  }
 
- MoveEdit(id: String){
-   this.router.navigate(['./edit/'+id]);
-   console.log(id);
-   return this.http.put('http://localhost:3000/api/employees/',+id);
-   
- }
  
  
  

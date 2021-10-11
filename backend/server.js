@@ -51,6 +51,22 @@ app.get('/api/employees', async (req, res) => {
 
     res.json(docs);
 })
+app.get('/api/employees/:id', async (req, res) => {
+   Toko.findById(req.params.id)
+    .then(data => {
+        if (!data)
+         res.status(404).send({ message: "Tidak ditemukan data id " +id});
+        else res.send(data);
+    })
+    .catch(err => {
+        res
+            .status(500)
+            .send({ message: " error data id "+id})
+    });
+});
+
+
+
 
 app.delete('/api/employees/:id',(req, res) => {
  Toko.findByIdAndRemove(req.params.id)
@@ -88,13 +104,6 @@ app.put('/api/employees/:id',(req, res, next) =>{
    })
 })
 
-app.get('/api/employees/:id', async (req, res) => {
-    const docs = await Toko.find();
-
-    if(!docs) return res.json({error: "Gagal mengambil pesan"});
-
-    res.json(docs);
-})
 
 mongoose.connect(url);
 

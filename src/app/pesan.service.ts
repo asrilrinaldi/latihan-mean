@@ -7,14 +7,19 @@ import { HttpClient } from '@angular/common/http';
 export class CommonService {
 url="http://localhost:3000/api/employees/";
 _id: any;
+id:any;
   constructor(private http:HttpClient) {}
 
  getData(){
    return this.http.get('http://localhost:3000/api/employees');
  }
 
-viewuser(_id: String){
-  return this.http.get('http://localhost:3000/api/employees/'+_id);
+viewuser(id: any){
+  return this.http.get('http://localhost:3000/api/employees/'+id);
+}
+getCurrentData(id: any){
+  return this.http.get('http://localhost:3000/api/employees/'+id);
+  
 }
 
 }

@@ -1,17 +1,22 @@
 <div class="margin">
   <h1>Edit Employee</h1>
-  <a routerLink="/home">Back</a><br><br>
-    <form [formGroup]="editEmploy" class="form" >
-      <label for="">Employee ID</label><br>
-      <input name="id"  matInput placeholder="" formControlName="id" >
+  
+  <a href="/home">Back</a><br><br>
+    <form [formGroup]="editBarang"class="form" >
+      <div class="form-group">
+
+      
+      <label>Employee ID</label><br>
+      <input placeholder="ID" formControlName="id" >
+    </div>
       <br><br>
       
-      <label for="">Name</label><br>
-      <input name="name"  matInput placeholder="" formControlName="name">
+      <label>Name</label><br>
+      <input placeholder="Name" formControlName="name">
       <br><br>
       
-      <label for="">Department</label><br>
-      <textarea name="department"  matInput placeholder="" formControlName="department"></textarea>
+      <label>Department</label><br>
+      <textarea placeholder="departmen" formControlName="department"></textarea>
       <br><br>
     
       <button  >Save</button> 
