@@ -52,7 +52,8 @@ app.get('/api/employees', async (req, res) => {
     res.json(docs);
 })
 app.get('/api/employees/:id', async (req, res) => {
-   Toko.findById(req.params.id)
+    // Toko.findById(req.params.id)
+   Toko.findOne({"id": req.params.id})
     .then(data => {
         if (!data)
          res.status(404).send({ message: "Tidak ditemukan data id " +id});
