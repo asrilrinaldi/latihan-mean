@@ -1,6 +1,8 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
+import { CommonService} from '../pesan.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +14,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  
   id ='';
   name ='';
   department ='';
   data: any=[];
   
 
-  constructor (private http: HttpClient, private router: Router){}
+  constructor (private http: HttpClient, private router: Router, employ: CommonService){}
  
 
   async ngOnInit(){
@@ -34,6 +37,12 @@ export class HomeComponent implements OnInit {
     location.reload();
     }
   }
+  edit(id: String){
+    console.log(id);
+    this.http.get('http://localhost:3000/api/employees/'+id). toPromise();
+    
+    this.router.navigate(['./edit/'+id]);
+  }
 
  MoveEdit(id: String){
    this.router.navigate(['./edit/'+id]);
@@ -41,6 +50,7 @@ export class HomeComponent implements OnInit {
    return this.http.put('http://localhost:3000/api/employees/',+id);
    
  }
+ 
  
  
 

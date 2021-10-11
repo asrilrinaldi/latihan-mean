@@ -1,7 +1,11 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { Router } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, } from '@angular/forms';
+import { CommonService} from '../pesan.service';
+import { ToastrModule } from 'ngx-toastr';
+import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+
+
 
 
 @Injectable({
@@ -15,47 +19,55 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-
-  id ='';
-  name ='';
-  department ='';
-  data: any=[];
  
   
 
-  constructor (private http: HttpClient, private router: Router ){
-
-  }
+  
+  userId: any;
+  userDetails: any;
+  editEmploy: FormGroup = new FormGroup({
+    id: new FormControl(''),
+    name: new FormControl(''),
+    department: new FormControl('')
+  })
  
+  constructor (private employ:CommonService, private route: ActivatedRoute, private formBuilder: FormBuilder){}
+ 
+  
 
-  async ngOnInit(){
-    this.data = (await this.http.get('http://localhost:3000/api/employees').toPromise()) as any[];
-    console.log(this.data);
-  }
+  ngOnInit(): void{
+   this.route.params.subscribe(data =>{
+     this.userId = data._id;
+   });
 
-  kirim(){
-   console.log(this.id, this.name, this.department);
-   this.http.post('http://localhost:3000/api/employees', {id: this.id, name: this.name, department: this.department}). toPromise();
-   this.ngOnInit(); //auto refresh komponen tanpa reload
-  }
+  if(this.userId !== ''){
+    this.employ.viewuser(this.userId)
+    .toPromise()
+    .then(data => {
+      this.userDetails = data;
+      Object.assign(this.userDetails, data);
+      console.log(this.userDetails);
 
-  hapus(id: String){
-    if(confirm('Apakah yakin ingin menghapus data?')){
+      
+      this.editEmploy = this.formBuilder.group({
+        'id' : new FormControl(this.userDetails.id),
+        'name' : new FormControl(this.userDetails.name),
+        'department' : new FormControl(this.userDetails.department)
+      })
 
-    
-    console.log(id);
-    this.http.delete('http://localhost:3000/api/employees/'+id). toPromise();
-    this.ngOnInit(); //auto refresh komponen tanpa reload
+      })
+      .catch(err => {
+        console.log(err); 
+      })
+
+
     }
-  }
+   
 
- MoveEdit(id: String){
-   this.router.navigate(['./edit/'+id]);
-   console.log(id);
-   return this.http.put('http://localhost:3000/api/employees/',+id);
- }
-
-    
   }
+  
+
 
  
+
+}

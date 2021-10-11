@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { TambahComponent } from './tambah/tambah.component';
 
 
+
 const appRoutes: Routes = [
   { path: '',     component:  HomeComponent },
   { path: 'tambah',  component:  TambahComponent},

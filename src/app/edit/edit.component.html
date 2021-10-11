@@ -1,17 +1,17 @@
 <div class="margin">
   <h1>Edit Employee</h1>
   <a routerLink="/home">Back</a><br><br>
-    <form class="form">
+    <form [formGroup]="editEmploy" class="form" >
       <label for="">Employee ID</label><br>
-      <input name="id"  matInput placeholder="" >
+      <input name="id"  matInput placeholder="" formControlName="id" >
       <br><br>
       
       <label for="">Name</label><br>
-      <input name="name"  matInput placeholder="">
+      <input name="name"  matInput placeholder="" formControlName="name">
       <br><br>
       
       <label for="">Department</label><br>
-      <textarea name="department" matInput placeholder=""></textarea>
+      <textarea name="department"  matInput placeholder="" formControlName="department"></textarea>
       <br><br>
     
       <button  >Save</button> 
@@ -19,7 +19,5 @@
       <button class="delete">Delete</button>
    
     </form>
-  
-      
- 
     </div>
+ 

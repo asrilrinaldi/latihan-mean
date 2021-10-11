@@ -14,11 +14,11 @@
       <td>{{item.name}}</td>
       <td>{{item.department}}</td>
       <td>
-        <input type="hidden" #id value="{{item._id}}">
-        <a (click)="MoveEdit(id.value)">Edit</a>
-        <!-- <a routerLink="/edit">Edit</a> -->
+        <!-- <a routerLink="/edit/{{item._id}}">Edit</a> -->
+        <a (click)="edit(item._id)">Edit |</a>
         &NonBreakingSpace;
-        <a (click)="hapus(id.value)">Hapus</a>
+        <a (click)="hapus(item._id)">Hapus</a>
+    
       </td>
       
       
