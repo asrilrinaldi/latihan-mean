@@ -17,9 +17,9 @@ id:any;
 viewuser(id: any){
   return this.http.get('http://localhost:3000/api/employees/'+id);
 }
-getCurrentData(id: any){
-  return this.http.get('http://localhost:3000/api/employees/'+id);
-  
+
+updateData(id: any, data: any){
+  return this.http.put('http://localhost:3000/api/employees/'+id, data);
 }
 
 }

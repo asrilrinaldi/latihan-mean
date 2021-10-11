@@ -2,7 +2,7 @@
   <h1>Edit Employee</h1>
   
   <a href="/home">Back</a><br><br>
-    <form [formGroup]="editBarang"class="form" >
+    <form [formGroup]="editBarang" class="form" (ngSubmit)="updateData()" >
       <div class="form-group">
 
       
@@ -19,7 +19,7 @@
       <textarea placeholder="departmen" formControlName="department"></textarea>
       <br><br>
     
-      <button  >Save</button> 
+      <button type="submit" >Save</button> 
        
       <button class="delete">Delete</button>
    

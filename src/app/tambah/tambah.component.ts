@@ -40,7 +40,6 @@ export class TambahComponent implements OnInit {
 
     console.log(id);
     this.http.delete('http://localhost:3000/api/employees/'+id). toPromise();
-    this.ngOnInit(); //auto refresh komponen tanpa reload
     }
   }
 

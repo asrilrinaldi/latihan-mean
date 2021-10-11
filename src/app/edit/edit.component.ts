@@ -2,16 +2,13 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, } from '@angular/forms';
 import { CommonService} from '../pesan.service';
-import { ToastrModule } from 'ngx-toastr';
+import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
-
-
 
 
 @Injectable({
   providedIn: 'root'
 })
-
 
 @Component({
   selector: 'app-edit',
@@ -32,26 +29,13 @@ export class EditComponent implements OnInit {
   constructor (
     private route: ActivatedRoute,
     private Service: CommonService,
+    private router: Router,
     private formBuilder: FormBuilder
     
     ){}
  
 
   ngOnInit(): void{
-  //   console.warn(this.route.snapshot.params.id)
-  //   this.Service.getCurrentData(this.route.snapshot.params.id).subscribe((result)=>{
-  //   console.warn(result)
-    
-    
-  //   this.editBarang= new FormGroup({
-      
-  //     id: new FormControl(result),
-  //     name: new FormControl(''),
-  //     department: new FormControl('')
-   
-  //   });
-  
-  // })
   this.route.params.subscribe(data => {
     this.userId = data.id;
   });
@@ -61,6 +45,7 @@ export class EditComponent implements OnInit {
     .then(data =>{
       this.userDetails =data;
       Object.assign(this.userDetails,data);
+      console.log(this.userDetails);
 
 
       this.editBarang = this.formBuilder.group({
@@ -69,12 +54,32 @@ export class EditComponent implements OnInit {
         'department' : new FormControl(this.userDetails.department)
       })
     })
+    .catch(err => {
+      console.log(err);
+    })
   }
 
   }
-  getOne(){
 
+  updateData(){
+    // this.Service.updateData(this.userId, this.editBarang.value).subscribe(data => {
+    //   console.log('data berhasil di ubah');
+
+    // }, err => {
+    //   console.log('tidak dapat megubah data');
+    
+    // })
+    if(confirm('Apakah data sudah benar?')){
+    console.log(this.editBarang.value);
+    this.Service.updateData(this.route.snapshot.params.id, this.editBarang.value).
+    subscribe((result)=>{
+      console.log(result);
+
+    })
+    location.reload();
   }
+  }
+
   
 
 
