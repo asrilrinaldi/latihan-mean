@@ -1,7 +1,7 @@
 <div class="margin">
   <h1>Employee List</h1>
   <button routerLink="/tambah">+ New Employee</button>
-  <br/><br/>
+  <br /><br />
   <table>
     <tr>
       <th>Employee ID</th>
@@ -15,16 +15,8 @@
       <td>{{item.department}}</td>
       <td>
         <a routerLink="/edit/{{item._id}}">[Edit]</a>
-     
-        &NonBreakingSpace;
-        <a (click)="hapus(item._id)">Hapus</a>
-    
       </td>
-      
-      
-    </tr>
-    
-   
-  
-  </table>
 
+    </tr>
+
+  </table>

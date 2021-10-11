@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, } from '@angular/forms';
-import { CommonService} from '../pesan.service';
+import { CommonService } from '../pesan.service';
 import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
@@ -16,83 +16,77 @@ import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
- alert:boolean = false;
- userDetails : any;
- userId : any;
- editBarang= new FormGroup({
-   id: new FormControl(''),
-   name: new FormControl(''),
-   department: new FormControl('')
+  alert: boolean = false;
+  userDetails: any;
+  userId: any;
+  editBarang = new FormGroup({
+    id: new FormControl(''),
+    name: new FormControl(''),
+    department: new FormControl('')
 
- });
+  });
 
-  constructor (
+  constructor(
     private route: ActivatedRoute,
     private Service: CommonService,
     private router: Router,
     private formBuilder: FormBuilder
-    
-    ){}
- 
 
-  ngOnInit(): void{
-  this.route.params.subscribe(data => {
-    this.userId = data.id;
-  });
-  if(this.userId  !==''){
-    this.Service.viewuser(this.userId)
-    .toPromise()
-    .then(data =>{
-      this.userDetails =data;
-      Object.assign(this.userDetails,data);
-      console.log(this.userDetails);
+  ) { }
 
 
-      this.editBarang = this.formBuilder.group({
-        'id' : new FormControl(this.userDetails.id),
-        'name' : new FormControl(this.userDetails.name),
-        'department' : new FormControl(this.userDetails.department)
-      })
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }
+  ngOnInit(): void {
+    this.route.params.subscribe(data => {
+      this.userId = data.id;
+    });
+    if (this.userId !== '') {
+      this.Service.viewuser(this.userId)
+        .toPromise()
+        .then(data => {
+          this.userDetails = data;
+          Object.assign(this.userDetails, data);
+          console.log(this.userDetails);
 
-  }
 
-  updateData(){
-    // this.Service.updateData(this.userId, this.editBarang.value).subscribe(data => {
-    //   console.log('data berhasil di ubah');
-
-    // }, err => {
-    //   console.log('tidak dapat megubah data');
-    
-    // })
-    if(confirm('Apakah data sudah benar?')){
-    console.log(this.editBarang.value);
-    this.Service.updateData(this.route.snapshot.params.id, this.editBarang.value).
-    subscribe((result)=>{
-      console.log(result);
-
-    })
-    location.reload();
-  }
-  }
-  deleteData(){
-    if(confirm('Apakah ingin menghapus data?')){
-    this.Service.deleteData(this.route.snapshot.params.id).
-    subscribe((result)=>{
-      console.log(result);
-    })
-    this.router.navigate(['./home']);
+          this.editBarang = this.formBuilder.group({
+            'id': new FormControl(this.userDetails.id),
+            'name': new FormControl(this.userDetails.name),
+            'department': new FormControl(this.userDetails.department)
+          })
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
-    
+
   }
 
-  
+  updateData() {
+    if (confirm('Apakah data sudah benar?')) {
+      console.log(this.editBarang.value);
+      this.Service.updateData(this.route.snapshot.params.id, this.editBarang.value).
+        subscribe((result) => {
+          console.log(result);
+
+        })
+      location.reload();
+    }
+  }
+
+  deleteData() {
+    if (confirm('Apakah ingin menghapus data?')) {
+      this.Service.deleteData(this.route.snapshot.params.id).
+        subscribe((result) => {
+          console.log(result);
+        })
+      this.router.navigate(['./home']);
+    }
+
+  }
 
 
- 
+
+
+
 
 }
