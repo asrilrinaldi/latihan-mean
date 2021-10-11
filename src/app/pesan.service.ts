@@ -21,5 +21,8 @@ viewuser(id: any){
 updateData(id: any, data: any){
   return this.http.put('http://localhost:3000/api/employees/'+id, data);
 }
+deleteData(id: any){
+  return this.http.delete('http://localhost:3000/api/employees/'+id);
+}
 
 }

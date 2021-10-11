@@ -79,6 +79,16 @@ export class EditComponent implements OnInit {
     location.reload();
   }
   }
+  deleteData(){
+    if(confirm('Apakah ingin menghapus data?')){
+    this.Service.deleteData(this.route.snapshot.params.id).
+    subscribe((result)=>{
+      console.log(result);
+    })
+    this.router.navigate(['./home']);
+    }
+    
+  }
 
   
 
