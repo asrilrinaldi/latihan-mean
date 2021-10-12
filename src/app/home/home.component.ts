@@ -29,19 +29,4 @@ export class HomeComponent implements OnInit {
     console.log(this.data);
   }
 
-  hapus(id: String){
-    if(confirm('Apakah yakin ingin menghapus data?')){
-
-    console.log(id);
-    this.http.delete('http://localhost:3000/api/employees/'+id). toPromise();
-    location.reload();
-    }
-  }
-
- 
- 
- 
-
-
-
 }
