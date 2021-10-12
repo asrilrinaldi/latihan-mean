@@ -69,7 +69,7 @@ export class EditComponent implements OnInit {
           console.log(result);
 
         })
-      location.reload();
+      
     }
   }
 
@@ -79,8 +79,9 @@ export class EditComponent implements OnInit {
         subscribe((result) => {
           console.log(result);
         })
-      this.router.navigate(['./home']);
+    
     }
+    location.href = '/home';
 
   }
 

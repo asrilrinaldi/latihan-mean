@@ -70,7 +70,7 @@ app.get('/api/employees/:id', async (req, res) => {
 
 
 app.delete('/api/employees/:id',(req, res) => {
- Toko.findByIdAndRemove(req.params.id)
+ Toko.findOneAndDelete({"id" :req.params.id})
     .then(data => {
     if (!data){
         res.status(404).send({
