@@ -14,15 +14,12 @@ export class TambahComponent implements OnInit {
   id ='';
   name ='';
   department ='';
-  data: String[]=[];
-  
 
   constructor (private http: HttpClient, private router: Router){}
  
 
   async ngOnInit(){
-    this.data = (await this.http.get('http://localhost:3000/api/employees').toPromise()) as any[];
-    console.log(this.data);
+ 
   }
 
   kirim(){
@@ -34,14 +31,5 @@ export class TambahComponent implements OnInit {
    
    }
   }
-
-  hapus(id: String){
-    if(confirm('Apakah yakin ingin menghapus data?')){
-
-    console.log(id);
-    this.http.delete('http://localhost:3000/api/employees/'+id). toPromise();
-    }
-  }
-
 
 }

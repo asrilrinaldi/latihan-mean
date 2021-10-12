@@ -92,7 +92,7 @@ app.delete('/api/employees/:id',(req, res) => {
 app.put('/api/employees/:id',(req, res, next) =>{
    console.log(req.body);
 
-   Toko.findByIdAndUpdate(req.params.id, {
+   Toko.findOneAndUpdate({ "id" : req.params.id}, {
        $set: req.body
    },(error, data) => {
        if(error){

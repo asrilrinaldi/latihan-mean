@@ -10,9 +10,9 @@ _id: any;
 id:any;
   constructor(private http:HttpClient) {}
 
- getData(){
+getData(){
    return this.http.get('http://localhost:3000/api/employees');
- }
+}
 
 viewuser(id: any){
   return this.http.get('http://localhost:3000/api/employees/'+id);
@@ -24,5 +24,6 @@ updateData(id: any, data: any){
 deleteData(id: any){
   return this.http.delete('http://localhost:3000/api/employees/'+id);
 }
+
 
 }
