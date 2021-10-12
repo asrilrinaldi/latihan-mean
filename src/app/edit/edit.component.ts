@@ -67,8 +67,8 @@ export class EditComponent implements OnInit {
       this.Service.updateData(this.route.snapshot.params.id, this.editBarang.value).
         subscribe((result) => {
           console.log(result);
-
         })
+        location.href = '/home';
       
     }
   }
