@@ -26,10 +26,9 @@ export class TambahComponent implements OnInit {
    if(confirm('Apakah data sudah benar?')){
    console.log(this.id, this.name, this.department);
    this.http.post('http://localhost:3000/api/employees', {id: this.id, name: this.name, department: this.department}). toPromise();
-   this.router.navigate(['./home']);
-   
-   
+   location.href = '/home';
    }
+   
   }
 
 }
