@@ -79,9 +79,9 @@ export class EditComponent implements OnInit {
         subscribe((result) => {
           console.log(result);
         })
-    
-    }
     location.href = '/home';
+    }
+    
 
   }
 
