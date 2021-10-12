@@ -13,6 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 
@@ -23,9 +24,11 @@ import { HomeComponent } from './home/home.component';
     EditComponent,
     HomeComponent,
     TambahComponent
+ 
   ],
   imports: [
     BrowserModule,
+    OrderModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
-import { disableDebugTools } from '@angular/platform-browser';
 
 
 @Component({
@@ -26,7 +25,7 @@ export class TambahComponent implements OnInit {
    if(confirm('Apakah data sudah benar?')){
    console.log(this.id, this.name, this.department);
    this.http.post('http://localhost:3000/api/employees', {id: this.id, name: this.name, department: this.department}). toPromise();
-   location.href = '/home';
+location.href = '/home';
    }
    
   }

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { CommonService} from '../pesan.service';
 
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,6 +29,14 @@ export class HomeComponent implements OnInit {
   async ngOnInit(){
     this.data = (await this.http.get('http://localhost:3000/api/employees').toPromise()) as any[];
     console.log(this.data);
+  }
+
+  key : String= 'ID';
+  reverse:boolean =false;
+  sort(key: any){
+    this.key = key;
+    this.reverse = !this.reverse;
+    console.log(this.reverse)
   }
 
 }

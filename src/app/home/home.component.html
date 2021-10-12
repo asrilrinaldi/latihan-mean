@@ -4,12 +4,12 @@
   <br /><br />
   <table>
     <tr>
-      <th ><i class="fa fa-sort-down"></i>Employee ID  </th>
-      <th ><i class="fa fa-sort-down"></i>Employee Name</th>
-      <th ><i class="fa fa-sort-down"></i>Department</th>
-      <th><i class="fa fa-sort-down"></i>Actions</th>
+      <th (click)="sort('id')" ><i class="fa fa-sort-down"></i>Employee ID  </th>
+      <th (click)="sort('name')"><i class="fa fa-sort-down"></i>Employee Name</th>
+      <th (click)="sort('department')"><i class="fa fa-sort-down"></i>Department</th>
+      <th ><i class="fa fa-sort-down"></i>Actions</th>
     </tr>
-    <tr *ngFor="let item of data">
+    <tr *ngFor="let item of data | orderBy: key: reverse">
       <td>{{item.id}}</td>
       <td>{{item.name}}</td>
       <td>{{item.department}}</td>
